@@ -1,5 +1,5 @@
 # BIS-LAB
-RESEARCH PAPER: https://ieeexplore.ieee.org/document/585892
+RESEARCH PAPER: https://pmc.ncbi.nlm.nih.gov/articles/PMC4923467/
 ```
 PROBLEM STATEMENT:
 
