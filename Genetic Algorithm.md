@@ -1,4 +1,3 @@
-# BIS-LAB
 RESEARCH PAPER: https://pmc.ncbi.nlm.nih.gov/articles/PMC4923467/
 ```
 PROBLEM STATEMENT:
