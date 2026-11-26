@@ -1,4 +1,5 @@
 RESEARCH PAPER:https://arxiv.org/abs/cs/0102027
+```
 PROBLEM STATEMENT
 1. Implement a Gene Expression Algorithm using Python.
 2. Define a mathematical function to be optimized.
@@ -10,8 +11,9 @@ PROBLEM STATEMENT
 8. Repeat the process for a fixed number of generations.
 9. Track and display the best solution found during the iterations.
 10. Generate graphs to visualize the best solution and convergence.
-
+```
 CODE IMPLEMENTATION
+```PY
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -220,7 +222,8 @@ plt.ylabel("Best Fitness")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-
+```
+```
 Iteration: 1 Best Fitness: 0.001378
 Iteration: 2 Best Fitness: 0.000069
 Iteration: 3 Best Fitness: 0.000069
@@ -325,3 +328,9 @@ Iteration: 100 Best Fitness: 0.000004
 Best Expressed Solution (x): 2.998046
 Minimum Fitness: 3.82e-06
 Best Gene Sequence: 101001100101111111111111
+```
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/0c4446b4-6f63-4534-90f4-4fa84434f8e8" />
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/afeb101b-8bc8-4be5-ace3-e8ca8fceb2ef" />
+
+
+
