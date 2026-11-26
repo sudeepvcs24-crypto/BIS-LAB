@@ -12,6 +12,7 @@ Display the best solution and optimal fitness value.
 Plot graphs to visualize the best solution and the convergence of the algorithm.
 ```
 CODE IMPLEMENTATION
+```PY
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -141,7 +142,8 @@ plt.xlabel("Iteration")
 plt.ylabel("Best Fitness")
 plt.grid(True)
 plt.show()
-
+```
+```
 Iteration: 1 Best Fitness: 9.995996
 Iteration: 2 Best Fitness: 9.999620
 Iteration: 3 Best Fitness: 9.999620
@@ -245,4 +247,8 @@ Iteration: 100 Best Fitness: 10.000000
 
 Best Position: 3.0
 Maximum Fitness: 10.0
+```
+<img width="707" height="470" alt="image" src="https://github.com/user-attachments/assets/b6dea958-cd7e-4ddf-92df-c70bb9ec32a1" />
+<img width="726" height="470" alt="image" src="https://github.com/user-attachments/assets/b7dc1c1b-ca7a-427a-8a0d-f0626cf42d93" />
+
 
