@@ -1,4 +1,5 @@
 RESEARCH PAPER:https://ieeexplore.ieee.org/document/488968
+```
 PROBLEM STATEMENT:
 
 Implement the Particle Swarm Optimization (PSO) algorithm using Python.
@@ -9,7 +10,7 @@ Update each particle's velocity and position using its personal best and global 
 Repeat the process for a fixed number of iterations until convergence.
 Display the best solution and optimal fitness value.
 Plot graphs to visualize the best solution and the convergence of the algorithm.
-
+```
 CODE IMPLEMENTATION
 import numpy as np
 import matplotlib.pyplot as plt
