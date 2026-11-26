@@ -1,5 +1,5 @@
 RESEARCH PAPER:https://www.sciencedirect.com/science/article/pii/S0965997813001853
-
+```
 PROBLEM STATEMENT
 1. Implement the Grey Wolf Optimizer (GWO) algorithm using Python.
 2. Define a mathematical function to be optimized.
@@ -10,8 +10,10 @@ PROBLEM STATEMENT
 7. Repeat the process for a fixed number of iterations.
 8. Display the best solution and fitness value.
 9. Plot graphs to visualize the best solution and convergence.
+```
 
 CODE IMPLEMENTATION
+```PY
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -164,7 +166,9 @@ plt.ylabel("Best Fitness")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+```
 
+```
 Iteration: 1 Best Fitness: 0.001727
 Iteration: 2 Best Fitness: 0.000006
 Iteration: 3 Best Fitness: 0.000006
@@ -268,4 +272,8 @@ Iteration: 100 Best Fitness: 0.000000
 
 Best Position: 3.000018
 Minimum Fitness: 0.0
+```
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/8eff84cd-8c8f-44a9-911e-9cd9cee73db6" />
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/2c305e53-15c5-4676-9a1c-45ee844f44eb" />
+
 
