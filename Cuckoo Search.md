@@ -1,5 +1,5 @@
 RESEARCH PAPER:https://ieeexplore.ieee.org/abstract/document/5393690
-
+```
 PROBLEM STATEMENT:
 Implement the Cuckoo Search (CS) algorithm using Python.
 Define a mathematical function to be optimized.
@@ -11,9 +11,12 @@ Abandon a fraction of the worst nests and replace them with random solutions.
 Repeat the process for a fixed number of iterations.
 Display the best solution and its fitness.
 Plot graphs to visualize the best solution and convergence.
+```
 
 CODE IMPLEMENTATION
-  import numpy as np
+
+```PY
+import numpy as np
 import matplotlib.pyplot as plt
 import math
 
@@ -123,6 +126,8 @@ plt.ylabel("Best Fitness")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+```
+```
 Iteration: 1 Best Fitness: 0.073871
 Iteration: 2 Best Fitness: 0.073871
 Iteration: 3 Best Fitness: 0.069852
@@ -225,5 +230,8 @@ Iteration: 99 Best Fitness: 0.000000
 Iteration: 100 Best Fitness: 0.000000
 \nBest Solution (x): 2.999985
 Minimum Fitness: 0.0
+```
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/de523c5f-48ef-47d4-9493-b8cc64613508" />
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/d3865783-9674-4751-823b-9e0e5d2e567c" />
 
 
