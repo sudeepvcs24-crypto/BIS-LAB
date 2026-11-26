@@ -1,5 +1,5 @@
 RESEARCH PAPER:https://surface.syr.edu/eecs_techreports/167/
-
+```
 PROBLEM STATEMENT
 1. Implement a Parallel Cellular Algorithm using Python.
 2. Define a mathematical function to be optimized.
@@ -10,8 +10,9 @@ PROBLEM STATEMENT
 7. Repeat the process for a fixed number of iterations.
 8. Track and display the best solution found during the iterations.
 9. Generate graphs to visualize the best solution and algorithm convergence.
-
+```
 CODE IMPLEMENTATION
+```PY
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -168,4 +169,115 @@ plt.ylabel("Best Fitness")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+```
+```
+Iteration: 1 Best Fitness: 0.000001
+Iteration: 2 Best Fitness: 0.000001
+Iteration: 3 Best Fitness: 0.000001
+Iteration: 4 Best Fitness: 0.000001
+Iteration: 5 Best Fitness: 0.000001
+Iteration: 6 Best Fitness: 0.000001
+Iteration: 7 Best Fitness: 0.000001
+Iteration: 8 Best Fitness: 0.000001
+Iteration: 9 Best Fitness: 0.000000
+Iteration: 10 Best Fitness: 0.000000
+Iteration: 11 Best Fitness: 0.000000
+Iteration: 12 Best Fitness: 0.000000
+Iteration: 13 Best Fitness: 0.000000
+Iteration: 14 Best Fitness: 0.000000
+Iteration: 15 Best Fitness: 0.000000
+Iteration: 16 Best Fitness: 0.000000
+Iteration: 17 Best Fitness: 0.000000
+Iteration: 18 Best Fitness: 0.000000
+Iteration: 19 Best Fitness: 0.000000
+Iteration: 20 Best Fitness: 0.000000
+Iteration: 21 Best Fitness: 0.000000
+Iteration: 22 Best Fitness: 0.000000
+Iteration: 23 Best Fitness: 0.000000
+Iteration: 24 Best Fitness: 0.000000
+Iteration: 25 Best Fitness: 0.000000
+Iteration: 26 Best Fitness: 0.000000
+Iteration: 27 Best Fitness: 0.000000
+Iteration: 28 Best Fitness: 0.000000
+Iteration: 29 Best Fitness: 0.000000
+Iteration: 30 Best Fitness: 0.000000
+Iteration: 31 Best Fitness: 0.000000
+Iteration: 32 Best Fitness: 0.000000
+Iteration: 33 Best Fitness: 0.000000
+Iteration: 34 Best Fitness: 0.000000
+Iteration: 35 Best Fitness: 0.000000
+Iteration: 36 Best Fitness: 0.000000
+Iteration: 37 Best Fitness: 0.000000
+Iteration: 38 Best Fitness: 0.000000
+Iteration: 39 Best Fitness: 0.000000
+Iteration: 40 Best Fitness: 0.000000
+Iteration: 41 Best Fitness: 0.000000
+Iteration: 42 Best Fitness: 0.000000
+Iteration: 43 Best Fitness: 0.000000
+Iteration: 44 Best Fitness: 0.000000
+Iteration: 45 Best Fitness: 0.000000
+Iteration: 46 Best Fitness: 0.000000
+Iteration: 47 Best Fitness: 0.000000
+Iteration: 48 Best Fitness: 0.000000
+Iteration: 49 Best Fitness: 0.000000
+Iteration: 50 Best Fitness: 0.000000
+Iteration: 51 Best Fitness: 0.000000
+Iteration: 52 Best Fitness: 0.000000
+Iteration: 53 Best Fitness: 0.000000
+Iteration: 54 Best Fitness: 0.000000
+Iteration: 55 Best Fitness: 0.000000
+Iteration: 56 Best Fitness: 0.000000
+Iteration: 57 Best Fitness: 0.000000
+Iteration: 58 Best Fitness: 0.000000
+Iteration: 59 Best Fitness: 0.000000
+Iteration: 60 Best Fitness: 0.000000
+Iteration: 61 Best Fitness: 0.000000
+Iteration: 62 Best Fitness: 0.000000
+Iteration: 63 Best Fitness: 0.000000
+Iteration: 64 Best Fitness: 0.000000
+Iteration: 65 Best Fitness: 0.000000
+Iteration: 66 Best Fitness: 0.000000
+Iteration: 67 Best Fitness: 0.000000
+Iteration: 68 Best Fitness: 0.000000
+Iteration: 69 Best Fitness: 0.000000
+Iteration: 70 Best Fitness: 0.000000
+Iteration: 71 Best Fitness: 0.000000
+Iteration: 72 Best Fitness: 0.000000
+Iteration: 73 Best Fitness: 0.000000
+Iteration: 74 Best Fitness: 0.000000
+Iteration: 75 Best Fitness: 0.000000
+Iteration: 76 Best Fitness: 0.000000
+Iteration: 77 Best Fitness: 0.000000
+Iteration: 78 Best Fitness: 0.000000
+Iteration: 79 Best Fitness: 0.000000
+Iteration: 80 Best Fitness: 0.000000
+Iteration: 81 Best Fitness: 0.000000
+Iteration: 82 Best Fitness: 0.000000
+Iteration: 83 Best Fitness: 0.000000
+Iteration: 84 Best Fitness: 0.000000
+Iteration: 85 Best Fitness: 0.000000
+Iteration: 86 Best Fitness: 0.000000
+Iteration: 87 Best Fitness: 0.000000
+Iteration: 88 Best Fitness: 0.000000
+Iteration: 89 Best Fitness: 0.000000
+Iteration: 90 Best Fitness: 0.000000
+Iteration: 91 Best Fitness: 0.000000
+Iteration: 92 Best Fitness: 0.000000
+Iteration: 93 Best Fitness: 0.000000
+Iteration: 94 Best Fitness: 0.000000
+Iteration: 95 Best Fitness: 0.000000
+Iteration: 96 Best Fitness: 0.000000
+Iteration: 97 Best Fitness: 0.000000
+Iteration: 98 Best Fitness: 0.000000
+Iteration: 99 Best Fitness: 0.000000
+Iteration: 100 Best Fitness: 0.000000
+
+Best Solution (x): 2.999961
+Minimum Fitness: 0.0
+```
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/d4e62c60-d1e0-4876-8794-487477f4ceba" />
+<img width="790" height="490" alt="image" src="https://github.com/user-attachments/assets/ad6fecbd-a658-4e12-9d2e-4568c5b017e5" />
+
+
+
 
