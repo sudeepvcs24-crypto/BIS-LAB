@@ -1,0 +1,171 @@
+RESEARCH PAPER:https://surface.syr.edu/eecs_techreports/167/
+
+PROBLEM STATEMENT
+1. Implement a Parallel Cellular Algorithm using Python.
+2. Define a mathematical function to be optimized.
+3. Initialize a grid of cells with random candidate solutions.
+4. Evaluate the fitness of each cell.
+5. Update each cell based on its neighboring cells using predefined rules.
+6. Perform cell updates simultaneously in each iteration.
+7. Repeat the process for a fixed number of iterations.
+8. Track and display the best solution found during the iterations.
+9. Generate graphs to visualize the best solution and algorithm convergence.
+
+CODE IMPLEMENTATION
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parallel Cellular Algorithm for Function Optimization
+
+def objective(x):
+    return (x - 3) ** 2
+
+# Parameters
+grid_size = 20
+num_iterations = 100
+lower_bound = -10
+upper_bound = 10
+perturbation_scale = 0.5
+
+np.random.seed(42)
+
+# Initialize cells randomly
+cells = np.random.uniform(
+    lower_bound, upper_bound,
+    (grid_size, grid_size)
+)
+
+fitness = objective(cells)
+
+# Find initial best solution
+best_idx = np.unravel_index(
+    np.argmin(fitness), fitness.shape
+)
+
+best_position = float(cells[best_idx])
+best_fitness = float(fitness[best_idx])
+
+best_fitness_history = []
+
+# Main iteration loop
+for iteration in range(1, num_iterations + 1):
+
+    # Create copy for synchronous updates
+    next_cells = cells.copy()
+
+    for row in range(grid_size):
+        for col in range(grid_size):
+
+            # Von Neumann neighborhood
+            neighbors = [
+                (row, col),
+                ((row - 1) % grid_size, col),
+                ((row + 1) % grid_size, col),
+                (row, (col - 1) % grid_size),
+                (row, (col + 1) % grid_size)
+            ]
+
+            # Get neighborhood values
+            neighbor_values = np.array([
+                cells[r, c] for r, c in neighbors
+            ])
+
+            # Evaluate neighboring cells
+            neighbor_fitness = objective(
+                neighbor_values
+            )
+
+            # Select local best
+            local_best = neighbor_values[
+                np.argmin(neighbor_fitness)
+            ]
+
+            # Generate new candidate
+            candidate = local_best + np.random.normal(
+                0, perturbation_scale
+            )
+
+            candidate = np.clip(
+                candidate, lower_bound, upper_bound
+            )
+
+            # Replace cell if candidate is better
+            if objective(candidate) < objective(cells[row, col]):
+                next_cells[row, col] = candidate
+
+    # Apply all updates simultaneously
+    cells = next_cells
+
+    # Evaluate new population
+    fitness = objective(cells)
+
+    # Find current best
+    current_idx = np.unravel_index(
+        np.argmin(fitness), fitness.shape
+    )
+
+    current_best = float(cells[current_idx])
+    current_best_fitness = float(fitness[current_idx])
+
+    # Update global best
+    if current_best_fitness < best_fitness:
+        best_position = current_best
+        best_fitness = current_best_fitness
+
+    best_fitness_history.append(best_fitness)
+
+    # Print every iteration
+    print(
+        f"Iteration: {iteration} "
+        f"Best Fitness: {best_fitness:.6f}"
+    )
+
+# Final output
+print("\nBest Solution (x):", round(best_position, 6))
+print("Minimum Fitness:", round(best_fitness, 6))
+
+
+# GRAPH 1: Objective Function
+x_values = np.linspace(
+    lower_bound, upper_bound, 400
+)
+
+y_values = objective(x_values)
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(
+    x_values, y_values,
+    label="Objective Function"
+)
+
+plt.scatter(
+    [best_position], [best_fitness],
+    label="Best Solution", zorder=3
+)
+
+plt.title("Parallel Cellular Algorithm - Best Solution")
+plt.xlabel("x")
+plt.ylabel("Fitness f(x)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+# GRAPH 2: Convergence Graph
+plt.figure(figsize=(8, 5))
+
+plt.plot(
+    range(1, num_iterations + 1),
+    best_fitness_history,
+    marker="."
+)
+
+plt.title("Parallel Cellular Algorithm Convergence")
+plt.xlabel("Iteration")
+plt.ylabel("Best Fitness")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
