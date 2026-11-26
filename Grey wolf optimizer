@@ -1,0 +1,271 @@
+RESEARCH PAPER:https://www.sciencedirect.com/science/article/pii/S0965997813001853
+
+PROBLEM STATEMENT
+1. Implement the Grey Wolf Optimizer (GWO) algorithm using Python.
+2. Define a mathematical function to be optimized.
+3. Initialize a population of wolves with random positions.
+4. Evaluate the fitness of each wolf.
+5. Identify the alpha, beta, and delta wolves.
+6. Update the positions of wolves based on the positions of alpha, beta, and delta.
+7. Repeat the process for a fixed number of iterations.
+8. Display the best solution and fitness value.
+9. Plot graphs to visualize the best solution and convergence.
+
+CODE IMPLEMENTATION
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Objective function: minimize
+def objective(x):
+    return (x - 3) ** 2
+
+# Parameters
+num_wolves = 30
+num_iterations = 100
+lower_bound = -10
+upper_bound = 10
+
+np.random.seed(42)
+
+# Initialize wolves
+wolves = np.random.uniform(
+    lower_bound, upper_bound, num_wolves
+)
+
+# Initial fitness evaluation
+fitness = objective(wolves)
+
+# Identify alpha, beta, delta
+sorted_indices = np.argsort(fitness)
+
+alpha = wolves[sorted_indices[0]]
+beta = wolves[sorted_indices[1]]
+delta = wolves[sorted_indices[2]]
+
+alpha_fitness = objective(alpha)
+
+# Track best solution
+best_position = alpha
+best_fitness = alpha_fitness
+
+best_fitness_history = []
+
+# Main GWO loop
+for iteration in range(1, num_iterations + 1):
+
+    # Decrease a from 2 to 0
+    a = 2 - 2 * (iteration - 1) / (num_iterations - 1)
+
+    for i in range(num_wolves):
+
+        # Update using alpha wolf
+        r1, r2 = np.random.random(), np.random.random()
+        A1 = 2 * a * r1 - a
+        C1 = 2 * r2
+
+        D_alpha = abs(C1 * alpha - wolves[i])
+        X1 = alpha - A1 * D_alpha
+
+        # Update using beta wolf
+        r1, r2 = np.random.random(), np.random.random()
+        A2 = 2 * a * r1 - a
+        C2 = 2 * r2
+
+        D_beta = abs(C2 * beta - wolves[i])
+        X2 = beta - A2 * D_beta
+
+        # Update using delta wolf
+        r1, r2 = np.random.random(), np.random.random()
+        A3 = 2 * a * r1 - a
+        C3 = 2 * r2
+
+        D_delta = abs(C3 * delta - wolves[i])
+        X3 = delta - A3 * D_delta
+
+        # Calculate new position
+        wolves[i] = (X1 + X2 + X3) / 3
+
+        # Boundary control
+        wolves[i] = np.clip(
+            wolves[i], lower_bound, upper_bound
+        )
+
+    # Evaluate fitness
+    fitness = objective(wolves)
+
+    # Preserve best solution found so far
+    worst_index = np.argmax(fitness)
+    wolves[worst_index] = best_position
+
+    fitness = objective(wolves)
+
+    # Update alpha, beta and delta
+    sorted_indices = np.argsort(fitness)
+
+    alpha = wolves[sorted_indices[0]]
+    beta = wolves[sorted_indices[1]]
+    delta = wolves[sorted_indices[2]]
+
+    alpha_fitness = objective(alpha)
+
+    # Update best solution
+    if alpha_fitness < best_fitness:
+        best_position = alpha
+        best_fitness = alpha_fitness
+
+    best_fitness_history.append(best_fitness)
+
+    # Print every iteration
+    print(
+        f"Iteration: {iteration} "
+        f"Best Fitness: {best_fitness:.6f}"
+    )
+
+# Final output
+print("\nBest Position:", round(float(best_position), 6))
+print("Minimum Fitness:", round(float(best_fitness), 6))
+
+
+# GRAPH 1: Objective function and best solution
+x_values = np.linspace(lower_bound, upper_bound, 400)
+y_values = objective(x_values)
+
+plt.figure(figsize=(8, 5))
+plt.plot(x_values, y_values, label="Objective Function")
+
+plt.scatter(
+    [best_position],
+    [best_fitness],
+    label="GWO Best Solution",
+    zorder=3
+)
+
+plt.title("Grey Wolf Optimizer - Best Solution")
+plt.xlabel("x")
+plt.ylabel("Fitness f(x)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+# GRAPH 2: Convergence graph
+plt.figure(figsize=(8, 5))
+
+plt.plot(
+    range(1, num_iterations + 1),
+    best_fitness_history,
+    marker="."
+)
+
+plt.title("Grey Wolf Optimizer Convergence Graph")
+plt.xlabel("Iteration")
+plt.ylabel("Best Fitness")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+Iteration: 1 Best Fitness: 0.001727
+Iteration: 2 Best Fitness: 0.000006
+Iteration: 3 Best Fitness: 0.000006
+Iteration: 4 Best Fitness: 0.000006
+Iteration: 5 Best Fitness: 0.000006
+Iteration: 6 Best Fitness: 0.000006
+Iteration: 7 Best Fitness: 0.000006
+Iteration: 8 Best Fitness: 0.000006
+Iteration: 9 Best Fitness: 0.000006
+Iteration: 10 Best Fitness: 0.000006
+Iteration: 11 Best Fitness: 0.000006
+Iteration: 12 Best Fitness: 0.000006
+Iteration: 13 Best Fitness: 0.000006
+Iteration: 14 Best Fitness: 0.000006
+Iteration: 15 Best Fitness: 0.000006
+Iteration: 16 Best Fitness: 0.000006
+Iteration: 17 Best Fitness: 0.000006
+Iteration: 18 Best Fitness: 0.000006
+Iteration: 19 Best Fitness: 0.000006
+Iteration: 20 Best Fitness: 0.000006
+Iteration: 21 Best Fitness: 0.000006
+Iteration: 22 Best Fitness: 0.000006
+Iteration: 23 Best Fitness: 0.000006
+Iteration: 24 Best Fitness: 0.000006
+Iteration: 25 Best Fitness: 0.000004
+Iteration: 26 Best Fitness: 0.000001
+Iteration: 27 Best Fitness: 0.000001
+Iteration: 28 Best Fitness: 0.000001
+Iteration: 29 Best Fitness: 0.000001
+Iteration: 30 Best Fitness: 0.000001
+Iteration: 31 Best Fitness: 0.000001
+Iteration: 32 Best Fitness: 0.000001
+Iteration: 33 Best Fitness: 0.000001
+Iteration: 34 Best Fitness: 0.000001
+Iteration: 35 Best Fitness: 0.000001
+Iteration: 36 Best Fitness: 0.000001
+Iteration: 37 Best Fitness: 0.000001
+Iteration: 38 Best Fitness: 0.000001
+Iteration: 39 Best Fitness: 0.000001
+Iteration: 40 Best Fitness: 0.000001
+Iteration: 41 Best Fitness: 0.000001
+Iteration: 42 Best Fitness: 0.000001
+Iteration: 43 Best Fitness: 0.000001
+Iteration: 44 Best Fitness: 0.000001
+Iteration: 45 Best Fitness: 0.000001
+Iteration: 46 Best Fitness: 0.000001
+Iteration: 47 Best Fitness: 0.000001
+Iteration: 48 Best Fitness: 0.000001
+Iteration: 49 Best Fitness: 0.000001
+Iteration: 50 Best Fitness: 0.000001
+Iteration: 51 Best Fitness: 0.000001
+Iteration: 52 Best Fitness: 0.000001
+Iteration: 53 Best Fitness: 0.000001
+Iteration: 54 Best Fitness: 0.000001
+Iteration: 55 Best Fitness: 0.000001
+Iteration: 56 Best Fitness: 0.000001
+Iteration: 57 Best Fitness: 0.000001
+Iteration: 58 Best Fitness: 0.000001
+Iteration: 59 Best Fitness: 0.000001
+Iteration: 60 Best Fitness: 0.000001
+Iteration: 61 Best Fitness: 0.000001
+Iteration: 62 Best Fitness: 0.000001
+Iteration: 63 Best Fitness: 0.000001
+Iteration: 64 Best Fitness: 0.000001
+Iteration: 65 Best Fitness: 0.000001
+Iteration: 66 Best Fitness: 0.000001
+Iteration: 67 Best Fitness: 0.000001
+Iteration: 68 Best Fitness: 0.000001
+Iteration: 69 Best Fitness: 0.000001
+Iteration: 70 Best Fitness: 0.000001
+Iteration: 71 Best Fitness: 0.000001
+Iteration: 72 Best Fitness: 0.000001
+Iteration: 73 Best Fitness: 0.000001
+Iteration: 74 Best Fitness: 0.000001
+Iteration: 75 Best Fitness: 0.000001
+Iteration: 76 Best Fitness: 0.000001
+Iteration: 77 Best Fitness: 0.000001
+Iteration: 78 Best Fitness: 0.000001
+Iteration: 79 Best Fitness: 0.000001
+Iteration: 80 Best Fitness: 0.000001
+Iteration: 81 Best Fitness: 0.000001
+Iteration: 82 Best Fitness: 0.000001
+Iteration: 83 Best Fitness: 0.000001
+Iteration: 84 Best Fitness: 0.000001
+Iteration: 85 Best Fitness: 0.000001
+Iteration: 86 Best Fitness: 0.000000
+Iteration: 87 Best Fitness: 0.000000
+Iteration: 88 Best Fitness: 0.000000
+Iteration: 89 Best Fitness: 0.000000
+Iteration: 90 Best Fitness: 0.000000
+Iteration: 91 Best Fitness: 0.000000
+Iteration: 92 Best Fitness: 0.000000
+Iteration: 93 Best Fitness: 0.000000
+Iteration: 94 Best Fitness: 0.000000
+Iteration: 95 Best Fitness: 0.000000
+Iteration: 96 Best Fitness: 0.000000
+Iteration: 97 Best Fitness: 0.000000
+Iteration: 98 Best Fitness: 0.000000
+Iteration: 99 Best Fitness: 0.000000
+Iteration: 100 Best Fitness: 0.000000
+
+Best Position: 3.000018
+Minimum Fitness: 0.0
+
