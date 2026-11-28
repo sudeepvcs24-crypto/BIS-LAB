@@ -183,9 +183,7 @@ plt.ylabel("Y Coordinate")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-```
 
-```
 
 # -------------------- GRAPH 2: CONVERGENCE --------------------
 
@@ -203,6 +201,8 @@ plt.ylabel("Best Distance")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+```
+```
 Iteration: 1 Best Distance: 30.28
 Iteration: 2 Best Distance: 27.71
 Iteration: 3 Best Distance: 27.71
